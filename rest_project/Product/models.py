@@ -11,6 +11,7 @@ class Product(models.Model):
     name=models.CharField(max_length=50)
     price=models.FloatField(default=0.0)
     desc=models.TextField()
+    avg_score=models.FloatField(default=0.0)
 
     def __str__(self):
         return self.name
