@@ -13,3 +13,13 @@ class ProfileView(APIView):
             return Response('404',status=status.HTTP_404_NOT_FOUND)
         serializer=ProfileSerializer(profile)
         return Response(serializer.data,status=status.HTTP_200_OK)
+
+class RegisterView(APIView):
+
+    def post(self,request,*args,**kwargs):
+        serializer=RegisterSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response('Successfuly registered!',status=201)
+        return Response(serializer.errors,status=400)
+
