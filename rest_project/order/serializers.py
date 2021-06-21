@@ -14,3 +14,8 @@ class OrderSerializer(serializers.ModelSerializer):
         obj.save()
         return total_sum
 
+
+class MyOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'
