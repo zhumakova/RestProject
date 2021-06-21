@@ -7,7 +7,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Profile
-        fields=['full_name']
+        fields=['full_name' ]
 
 class RegisterSerializer(serializers.ModelSerializer):
     check_password = serializers.CharField(min_length=6, write_only=True)
@@ -26,3 +26,8 @@ class RegisterSerializer(serializers.ModelSerializer):
             Profile.objects.create(user=user, **profile_data)
             return user
         raise ValidationError("Passwords don't match. Try again!")
+
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField(min_length=5)
+    password = serializers.CharField(min_length=5)
